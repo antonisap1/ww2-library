@@ -39,9 +39,8 @@ router.get('/guns', (req, res) => {
   });
 });
 
-
 router.get('/guns/paginated', (req, res) => {
-  const { country, offset: inputOffset, limit } = req.query;
+  let { country, offset: inputOffset, limit, category, title } = req.query;
   const offset = (inputOffset - 1) * limit;
 
   let query = 'SELECT * FROM guns';
@@ -52,14 +51,37 @@ router.get('/guns/paginated', (req, res) => {
     countQuery += ' WHERE country = ?';
   }
 
+  if (category) {
+    category = `%${category}%`;
+    query += country ? ' AND category LIKE ?' : ' WHERE category LIKE ?';
+    countQuery += country ? ' AND category LIKE ?' : ' WHERE category LIKE ?';
+  }
+
+  if (title) {
+    title = `%${title}%`;
+    query += country || category ? ' AND title LIKE ?' : ' WHERE title LIKE ?';
+    countQuery += country || category ? ' AND title LIKE ?' : ' WHERE title LIKE ?';
+  }
+
   query += ` LIMIT ${limit} OFFSET ${offset}`;
 
-  pool.query(query, [country], (error, results) => {
+  const queryParams = [];
+  if (country) {
+    queryParams.push(country);
+  }
+  if (category) {
+    queryParams.push(category);
+  }
+  if (title) {
+    queryParams.push(title);
+  }
+
+  pool.query(query, queryParams, (error, results) => {
     if (error) {
       console.error('Error executing SQL query:', error);
       res.status(500).json({ error: 'Internal server error' });
     } else {
-      pool.query(countQuery, [country], (countError, countResults) => {
+      pool.query(countQuery, queryParams, (countError, countResults) => {
         if (countError) {
           console.error('Error executing SQL query:', countError);
           res.status(500).json({ error: 'Internal server error' });

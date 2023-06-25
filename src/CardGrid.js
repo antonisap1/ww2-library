@@ -46,11 +46,15 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
 
   useEffect(() => {
     let endpoint = 'http://localhost:3001/api/guns/paginated';
+    console.log(searchValue)
+    console.log(selectedCategory);
 
     const params = {
       country: selectedCountry,
       offset: page,
-      limit: limit
+      limit: limit,
+      title: searchValue,
+      category: selectedCategory,
     };
 
     axios

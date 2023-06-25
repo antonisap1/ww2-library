@@ -63,29 +63,15 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
       params['category'] = selectedCategory;
     }
 
+    if(selectedManufacturer){
+      params['manufacturer'] = selectedManufacturer;
+    }
+
     axios
       .get(endpoint, { params })
       .then((response) => {
         const { data, totalPages } = response.data;
-
-        const filteredCards = data.filter((card) => {
-          return (
-            (!selectedCountry || card.country === selectedCountry) &&
-            (!searchValue || card.title.toLowerCase().includes(searchValue.toLowerCase())) &&
-            (!selectedCategory || card.category === selectedCategory) &&
-            (!selectedManufacturer || card.manufacturer === selectedManufacturer)
-          );
-        });
-
-        const uniqueCards = filteredCards.reduce((acc, curr) => {
-          const isTitleExists = acc.find((card) => card.title === curr.title);
-          if (!isTitleExists) {
-            acc.push(curr);
-          }
-          return acc;
-        }, []);
-
-        setCards(uniqueCards);
+        setCards(data);
         setTotalPages(totalPages);
       })
       .catch((error) => {

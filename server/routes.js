@@ -40,7 +40,7 @@ router.get("/guns", (req, res) => {
 });
 
 router.get("/guns/paginated", (req, res) => {
-  let { country, offset: inputOffset, limit, category, title } = req.query;
+  let { country, offset: inputOffset, limit, category, title, manufacturer } = req.query;
   const offset = (inputOffset - 1) * limit;
 
   let query = `SELECT * FROM 
@@ -71,6 +71,12 @@ router.get("/guns/paginated", (req, res) => {
       country || category ? " AND title LIKE ?" : " WHERE title LIKE ?";
   }
 
+  if(manufacturer) {
+    manufacturer = `%${manufacturer}%`;
+    query += country || category || title ? " AND manufacturer LIKE ?" : " WHERE manufacturer LIKE ?";
+    countQuery += country || category || title ? " AND manufacturer LIKE ?" : " WHERE manufacturer LIKE ?";
+  }
+
   query += ` ORDER BY id ASC LIMIT ${limit} OFFSET ${offset} `;
 
   const queryParams = [];
@@ -82,6 +88,9 @@ router.get("/guns/paginated", (req, res) => {
   }
   if (title) {
     queryParams.push(title);
+  }
+  if(manufacturer) {
+    queryParams.push(manufacturer);
   }
 
   pool.query(query, queryParams, (error, results) => {

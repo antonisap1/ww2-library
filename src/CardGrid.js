@@ -3,10 +3,15 @@ import Grid from '@mui/material/Grid';
 import CardItem from './CardItem';
 import ModalContent from './ModalContent';
 import axios from 'axios';
+import { Pagination } from '@mui/material';
 
-function CardGrid({ selectedCountry,countryFlags, searchValue, selectedCategory, selectedManufacturer }) {
+function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory, selectedManufacturer }) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(12);
+  const [totalPages, setTotalPages] = useState(0);
+  const [lastSelectedCountry, setLastSelectedCountry] = useState('');
 
   const handleOpenModal = (card) => {
     setSelectedCard(card);
@@ -28,50 +33,64 @@ function CardGrid({ selectedCountry,countryFlags, searchValue, selectedCategory,
     }
   };
 
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
   useEffect(() => {
-    let endpoint = 'http://localhost:3001/api/guns';
+    if (selectedCountry !== lastSelectedCountry) {
+      setPage(1);
+      setLastSelectedCountry(selectedCountry);
+    }
+  }, [selectedCountry, lastSelectedCountry]); 
 
-    const params = {};
+  useEffect(() => {
+    let endpoint = 'http://localhost:3001/api/guns/paginated';
 
-    if (selectedCountry) {
-      params.country = selectedCountry;
+    const params = {
+      country: selectedCountry,
+      offset: page,
+      limit: limit,
+    };
+
+    if(searchValue) {
+      params['title'] = searchValue;
+    } 
+
+    if(selectedCategory) {
+      params['category'] = selectedCategory;
+    }
+
+    if(selectedManufacturer){
+      params['manufacturer'] = selectedManufacturer;
     }
 
     axios
       .get(endpoint, { params })
       .then((response) => {
-        const filteredCards = response.data.filter((card) => {
-          return (!selectedCountry || card.country === selectedCountry) && 
-          (!searchValue || card.title.toLowerCase().includes(searchValue.toLowerCase()))
-          &&(!selectedCategory||card.category == selectedCategory) 
-          &&(!selectedManufacturer||card.manufacturer == selectedManufacturer);
-
-        });
-
-        const uniqueCards = filteredCards.reduce((acc, curr) => {
-          const isTitleExists = acc.find((card) => card.title === curr.title);
-          if (!isTitleExists) {
-            acc.push(curr);
-          }
-          return acc;
-        }, []);
-
-        setCards(uniqueCards);
+        const { data, totalPages } = response.data;
+        setCards(data);
+        setTotalPages(totalPages);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [selectedCountry, searchValue, selectedCategory,selectedManufacturer]);
+  }, [selectedCountry, searchValue, selectedCategory, selectedManufacturer, page, limit]);
 
   return (
-    <Grid container spacing={4}>
-      {cards.map((card) => (
-        <Grid item key={card.id} xs={12} sm={6} md={4}>
-          <CardItem card={card} onOpenModal={handleOpenModal} />
-        </Grid>
-      ))}
+    <div>
+      <Grid container spacing={4}>
+        {cards.map((card) => (
+          <Grid item key={card.id} xs={12} sm={6} md={4}>
+            <CardItem card={card} onOpenModal={handleOpenModal} />
+          </Grid>
+        ))}
+      </Grid>
       <ModalContent card={selectedCard} onCloseModal={handleCloseModal} onNextClick={handleNextClick} />
-    </Grid>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Pagination count={totalPages} page={page} onChange={handlePageChange} />
+      </div>
+    </div>
   );
 }
 

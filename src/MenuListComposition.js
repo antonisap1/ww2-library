@@ -116,6 +116,21 @@ export default function MenuListComposition({ open, onClose, setSelectedCountry 
             <MenuItem onClick={() => handleCountrySelect('IRQ')}><ListItemIcon>
                 <img src="/IRQ.png" alt="Iraq Flag" style={{ width: '24px', height: '24px' }} />
               </ListItemIcon>Iraq</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('ITA')}><ListItemIcon>
+                <img src="/ITA.png" alt="Italy Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Italy</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('JAP')}><ListItemIcon>
+                <img src="/JAP.png" alt="Japan Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Japan</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('LAT')}><ListItemIcon>
+                <img src="/LAT.png" alt="Latvia Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Latvia</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('LIT')}><ListItemIcon>
+                <img src="/LIT.png" alt="Lithuania Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Lithuania</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('LUX')}><ListItemIcon>
+                <img src="/LUX.png" alt="Luxembourg Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Luxembourg</MenuItem>
 
 
           </MenuList>

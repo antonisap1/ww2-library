@@ -11,6 +11,7 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(0);
+  const [lastSelectedCountry, setLastSelectedCountry] = useState('');
 
   const handleOpenModal = (card) => {
     setSelectedCard(card);
@@ -35,6 +36,13 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   const handlePageChange = (event, value) => {
     setPage(value);
   };
+
+  useEffect(() => {
+    if (selectedCountry !== lastSelectedCountry) {
+      setPage(1);
+      setLastSelectedCountry(selectedCountry);
+    }
+  }, [selectedCountry, lastSelectedCountry]); 
 
   useEffect(() => {
     let endpoint = 'http://localhost:3001/api/guns/paginated';

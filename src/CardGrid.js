@@ -53,9 +53,15 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
       country: selectedCountry,
       offset: page,
       limit: limit,
-      title: searchValue,
-      category: selectedCategory,
     };
+
+    if(searchValue) {
+      params['title'] = searchValue;
+    } 
+
+    if(selectedCategory) {
+      params['category'] = selectedCategory;
+    }
 
     axios
       .get(endpoint, { params })

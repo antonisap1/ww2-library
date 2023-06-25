@@ -11,26 +11,6 @@ import Tooltip from "@mui/material/Tooltip";
 import { Grid } from "@mui/material";
 
 function CardItem({ card, onOpenModal }) {
-  const [countryFlags, setCountryFlags] = useState([]);
-
-  useEffect(() => {
-    const fetchCountryFlags = async () => {
-      try {
-        const encodedTitle = encodeURIComponent(card.title);
-        const response = await axios.get(
-          `http://localhost:3001/api/guns/${encodedTitle}/country`
-        );
-        const countries = response.data;
-
-        setCountryFlags(countries);
-      } catch (error) {
-        console.error("Error fetching country flags:", error);
-      }
-    };
-
-    fetchCountryFlags();
-  }, [card.title]);
-
   const getFirstSentence = (text) => {
     const sentences = text.split(". ");
     return sentences[0];
@@ -67,7 +47,7 @@ function CardItem({ card, onOpenModal }) {
         <CardActions>
           Used by:
           <Grid container spacing={1}>
-            {countryFlags.map((country) => (
+            {card.countries.split(',').map((country) => country.trim()).map((country) => (
               <Grid item xs={0}>
                 <Tooltip key={country} title={String(country)} arrow>
                   <img

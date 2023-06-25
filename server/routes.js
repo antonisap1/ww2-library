@@ -45,7 +45,7 @@ router.get('/guns/paginated', (req, res) => {
   const offset = (inputOffset - 1) * limit;
 
   let query = 'SELECT * FROM guns';
-  let countQuery = 'SELECT COUNT(*) as total FROM guns';
+  let countQuery = 'SELECT COUNT(DISTINCT title) as total FROM guns';
 
   if (country) {
     query += ' WHERE country = ?';

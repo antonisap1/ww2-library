@@ -9,7 +9,7 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(12);
   const [totalPages, setTotalPages] = useState(0);
   const [lastSelectedCountry, setLastSelectedCountry] = useState('');
 

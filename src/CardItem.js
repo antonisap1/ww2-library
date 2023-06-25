@@ -48,7 +48,7 @@ function CardItem({ card, onOpenModal }) {
           Used by:
           <Grid container spacing={1}>
             {card.countries.split(',').map((country) => country.trim()).map((country) => (
-              <Grid item xs={0}>
+              <Grid key={country} item xs={0}>
                 <Tooltip key={country} title={String(country)} arrow>
                   <img
                     src={`/${country}.png`}

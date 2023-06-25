@@ -44,7 +44,7 @@ router.get("/guns/paginated", (req, res) => {
   const offset = (inputOffset - 1) * limit;
 
   let query = `SELECT * FROM 
-            (SELECT id, title, description, category, manufacturer, GROUP_CONCAT(DISTINCT country SEPARATOR ', ') 
+            (SELECT id, title, description, category, manufacturer, imagePath, GROUP_CONCAT(DISTINCT country SEPARATOR ', ') 
             AS countries
             FROM guns
             GROUP BY title) resulttable`;

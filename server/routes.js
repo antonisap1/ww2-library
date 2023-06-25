@@ -39,6 +39,29 @@ router.get('/guns', (req, res) => {
   });
 });
 
+
+router.get('/guns/paginated', (req, res) => {
+  const { country, offset: inputOffset, limit } = req.query;
+  const offset = Math.max((inputOffset - 1) * limit, 0);
+
+  let query = 'SELECT * FROM guns';
+
+  if (country) {
+    query += ' WHERE country = ?';
+  }
+
+  query += ` LIMIT ${limit} OFFSET ${offset}`;
+
+  pool.query(query, [country], (error, results) => {
+    if (error) {
+      console.error('Error executing SQL query:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 router.get('/guns/title', (req, res) => {
   const query = 'SELECT title FROM guns';
 

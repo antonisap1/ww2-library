@@ -42,12 +42,14 @@ router.get('/guns', (req, res) => {
 
 router.get('/guns/paginated', (req, res) => {
   const { country, offset: inputOffset, limit } = req.query;
-  const offset = Math.max((inputOffset - 1) * limit, 0);
+  const offset = (inputOffset - 1) * limit;
 
   let query = 'SELECT * FROM guns';
+  let countQuery = 'SELECT COUNT(*) as total FROM guns';
 
   if (country) {
     query += ' WHERE country = ?';
+    countQuery += ' WHERE country = ?';
   }
 
   query += ` LIMIT ${limit} OFFSET ${offset}`;
@@ -57,7 +59,17 @@ router.get('/guns/paginated', (req, res) => {
       console.error('Error executing SQL query:', error);
       res.status(500).json({ error: 'Internal server error' });
     } else {
-      res.json(results);
+      pool.query(countQuery, [country], (countError, countResults) => {
+        if (countError) {
+          console.error('Error executing SQL query:', countError);
+          res.status(500).json({ error: 'Internal server error' });
+        } else {
+          const totalCount = countResults[0].total;
+          const totalPages = Math.ceil(totalCount / limit);
+
+          res.json({ data: results, totalPages });
+        }
+      });
     }
   });
 });

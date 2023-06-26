@@ -22,7 +22,7 @@ function FilterListMenu({ anchorEli, onClose, weaponManufacturer, onManufacturer
 
   return (
     <Menu
-      anchorEli={anchorEli}
+      anchorEl={anchorEli}
       open={Boolean(anchorEli)}
       onClose={onClose}
       anchorOrigin={{

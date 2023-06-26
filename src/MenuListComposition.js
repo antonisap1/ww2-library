@@ -131,6 +131,63 @@ export default function MenuListComposition({ open, onClose, setSelectedCountry 
               <MenuItem onClick={() => handleCountrySelect('LUX')}><ListItemIcon>
                 <img src="/LUX.png" alt="Luxembourg Flag" style={{ width: '24px', height: '24px' }} />
               </ListItemIcon>Luxembourg</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('MAN')}><ListItemIcon>
+                <img src="/MAN.png" alt="Manchukuo Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Manchukuo</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('MEN')}><ListItemIcon>
+                <img src="/MEN.png" alt="Menjiang Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Mengjiang</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('MEX')}><ListItemIcon>
+                <img src="/MEX.png" alt="Mexico Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Mexico</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('MNT')}><ListItemIcon>
+                <img src="/MNT.png" alt="Montenegro Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Montenegro</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('MON')}><ListItemIcon>
+                <img src="/MON.png" alt="Mongolia Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Mongolia</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('NEP')}><ListItemIcon>
+                <img src="/NEP.png" alt="Nepal Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Nepal</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('NOR')}><ListItemIcon>
+                <img src="/NOR.png" alt="Norway Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Norway</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('NZL')}><ListItemIcon>
+                <img src="/NZL.png" alt="New Zealand Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>New Zealand</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('HOL')}><ListItemIcon>
+                <img src="/HOL.png" alt="Netherlands Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Netherlands</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('PHI')}><ListItemIcon>
+                <img src="/PHI.png" alt="Philippines Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Philippines</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('POL')}><ListItemIcon>
+                <img src="/POL.png" alt="Poland Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Poland</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('ROM')}><ListItemIcon>
+                <img src="/ROM.png" alt="Romania Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Romania</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('SAF')}><ListItemIcon>
+                <img src="/SAF.png" alt="South Africa Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>South Africa</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('SIA')}><ListItemIcon>
+                <img src="/SIA.png" alt="Tailand Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Tailand</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('SOV')}><ListItemIcon>
+                <img src="/SOV.png" alt="Soviet Union Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Soviet Union</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('SLO')}><ListItemIcon>
+                <img src="/SLO.png" alt="Slovakia Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Slovakia</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('ENG')}><ListItemIcon>
+                <img src="/ENG.png" alt="United Kingdom Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>United Kingdom</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('USA')}><ListItemIcon>
+                <img src="/USA.png" alt="USA Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>USA</MenuItem>
+              <MenuItem onClick={() => handleCountrySelect('YUG')}><ListItemIcon>
+                <img src="/YUG.png" alt="Yugoslavia Flag" style={{ width: '24px', height: '24px' }} />
+              </ListItemIcon>Yugoslavia</MenuItem>
 
 
           </MenuList>

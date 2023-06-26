@@ -32,9 +32,6 @@ function MyAppBar({ onCountrySelect, onDarkModeChange }) {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" color="inherit" component="div">
-          Photos
-        </Typography>
         <MenuListComposition
           open={open}
           onClose={() => setOpen(false)}

@@ -9,12 +9,12 @@ function FilterListMenu({ anchorEli, onClose, weaponManufacturer, onManufacturer
     setSelectedManufacturer('');
   }, [weaponManufacturer]);
 
-  const handleMenuItemClick = (manufacturer) => {
+  const handleMenuItemClick = (manufacturer) => {//Sets selected manufacturer if any
     setSelectedManufacturer(manufacturer);
     onManufacturerSelect(manufacturer);
     onClose();
   };
-  const handleRemoveFilter = () => {
+  const handleRemoveFilter = () => { //nullifies deselected filter
     setSelectedManufacturer('');
     onManufacturerSelect('');
     onClose();
@@ -39,7 +39,7 @@ function FilterListMenu({ anchorEli, onClose, weaponManufacturer, onManufacturer
           Remove Filter
         </MenuItem>
       )}
-      {weaponManufacturer.map((manufacturer) => (
+      {weaponManufacturer.map((manufacturer) => ( //displays all the unique manufacturer
         <MenuItem key={manufacturer} onClick={() => handleMenuItemClick(manufacturer)}>
           {manufacturer}
         </MenuItem>

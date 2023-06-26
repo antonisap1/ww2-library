@@ -14,9 +14,9 @@ const pool = mysql.createPool({
   database: 'small_arms_db',
 });
 
-app.use('/api', routes); // Mount the routes
+app.use('/api', routes); // Mounting routes
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3001; //Setting port
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

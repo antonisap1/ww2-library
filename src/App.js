@@ -34,26 +34,20 @@ function App() {
         const names = response.data;
         const uniqueNames = Array.from(new Set(names));
         setWeaponNames(uniqueNames);
-        //console.log('Weapon Names:', uniqueNames);
-        //console.log('Response Data:', response.data);
-        //setWeaponNames(names);
       })
       .catch((error) => {
         console.error("Error fetching weapon names:", error);
       });
   }, []);
-
+  
   useEffect(() => {
     // Fetch the unique weapon category from the backend API
     axios
       .get(`http://localhost:3001/api/guns/category`)
       .then((response) => {
         const category = response.data;
-        const uniqueCategory = Array.from(new Set(category));
-        setWeaponCategory(uniqueCategory);
-        //console.log('Weapon Category:', uniqueCategory);
-        //console.log('Response Data:', response.data);
-        //setWeaponNames(names);
+        const uniqueCategory = Array.from(new Set(category));// List of unique manufacturers
+        setWeaponCategory(uniqueCategory);                    //For filters
       })
       .catch((error) => {
         console.error("Error fetching weapon categories:", error);
@@ -66,11 +60,8 @@ function App() {
       .get(`http://localhost:3001/api/guns/manufacturer`)
       .then((response) => {
         const manufacturer = response.data;
-        const uniqueManufacturer = Array.from(new Set(manufacturer));
-        setWeaponManufacturer(uniqueManufacturer);
-        //console.log('Weapon Category:', uniqueCategory);
-        //console.log('Response Data:', response.data);
-        //setWeaponNames(names);
+        const uniqueManufacturer = Array.from(new Set(manufacturer));// List of unique manufacturers
+        setWeaponManufacturer(uniqueManufacturer);                   //For filters
       })
       .catch((error) => {
         console.error("Error fetching weapon manufacturer:", error);

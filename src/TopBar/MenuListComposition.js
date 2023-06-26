@@ -8,7 +8,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 export default function MenuListComposition({ open, onClose, setSelectedCountry }) {
   const anchorRef = React.useRef(null);
 
-  const handleListKeyDown = (event) => {
+  const handleListKeyDown = (event) => {  //Close swipable with Tab
     if (event.key === 'Tab') {
       event.preventDefault();
       onClose();
@@ -26,7 +26,7 @@ export default function MenuListComposition({ open, onClose, setSelectedCountry 
 
   return (
     <div>
-      <Button
+      <Button                                                 //Button under menu icon
         ref={anchorRef}
         id="composition-button"
         aria-controls={open ? 'composition-menu' : undefined}
@@ -35,7 +35,7 @@ export default function MenuListComposition({ open, onClose, setSelectedCountry 
         onClick={() => onClose(false)}
         style={{ display: 'none' }}
       >
-        Hidden Button
+        Hidden Button 
       </Button>
       <SwipeableDrawer anchor="left" open={open} onClose={() => onClose(false)} onOpen={() => {}}>
         <div role="presentation" onClick={() => onClose(false)} onKeyDown={handleListKeyDown}>
@@ -184,8 +184,6 @@ export default function MenuListComposition({ open, onClose, setSelectedCountry 
               <MenuItem onClick={() => handleCountrySelect('YUG')}><ListItemIcon>
                 <img src="/Flags/YUG.png" alt="Yugoslavia Flag" style={{ width: '24px', height: '24px' }} />
               </ListItemIcon>Yugoslavia</MenuItem>
-
-
           </MenuList>
         </div>
       </SwipeableDrawer>

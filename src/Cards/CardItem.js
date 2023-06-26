@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import { Grid } from "@mui/material";
 
@@ -17,7 +16,7 @@ function CardItem({ card, onOpenModal }) {
   };
 
   const handleImageClick = () => {
-    onOpenModal(card);
+    onOpenModal(card); //Handles click on image
   };
 
   return (
@@ -43,15 +42,15 @@ function CardItem({ card, onOpenModal }) {
           {card.category}
         </Typography>
 
-        <Typography>{getFirstSentence(card.description)}</Typography>
+        <Typography>{getFirstSentence(card.description)}</Typography> {/*Takes the first sentense for each guns description based on first ". " */}
         <CardActions>
           Used by:
           <Grid container spacing={1}>
-            {card.countries.split(',').map((country) => country.trim()).map((country) => (
+            {card.countries.split(',').map((country) => country.trim()).map((country) => ( //Splits and trims all countries
               <Grid key={country} item xs={0}>
                 <Tooltip key={country} title={String(country)} arrow>
                   <img
-                    src={`/Flags/${country}.png`}
+                    src={`/Flags/${country}.png`}   //displays the flags in each item based on the database,which country uses each weapon
                     alt={country}
                     style={{
                       width: "24px",

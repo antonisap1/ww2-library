@@ -39,7 +39,7 @@ function HeroUnit({ onSearch, weaponNames,weaponCategory,onCategorySelect,weapon
     setAnchorEli(null);
   };
 
-  const handleCategorySelect = (category) => {
+  const handleCategorySelect = (category) => {  //Handles category filter(active or not,if active which selected etc)
     if (category !== '') {
       setIsFilterActive(true);
     } else {
@@ -49,7 +49,7 @@ function HeroUnit({ onSearch, weaponNames,weaponCategory,onCategorySelect,weapon
     setAnchorEl(null);
   };
 
-  const handleManufacturerSelect = (manufacturer) => {
+  const handleManufacturerSelect = (manufacturer) => {  //Handles manufacturer filter(active or not,if active which selected etc)
     if (manufacturer !== '') {
       setIsFilterListActive(true);
     } else {
@@ -71,13 +71,13 @@ function HeroUnit({ onSearch, weaponNames,weaponCategory,onCategorySelect,weapon
         </Typography>
         
         <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
-        {isFilterListActive ? (
+        {isFilterListActive ? ( //Check if a filter is chosen in order to change its icon
             <FilterListOffIcon onClick={handleFilterListClick} />
             ) : (
             <FilterListIcon onClick={handleFilterListClick} />
             )}
           <SearchField onSearch={handleSearch} weaponNames={weaponNames}  />
-          {isFilterActive ? (
+          {isFilterActive ? ( //Check if a filter is chosen in order to change its icon
             <FilterAltOffIcon onClick={handleFilterClick} />
             ) : (
             <FilterAltIcon onClick={handleFilterClick} />

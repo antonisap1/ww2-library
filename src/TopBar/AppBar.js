@@ -16,8 +16,8 @@ function MyAppBar({ onCountrySelect, onDarkModeChange }) {
   };
 
   const handleCountrySelect = (country) => {
-    onCountrySelect(country); // update selectedCountry state in parent App component
-    setOpen(false); // close menu drawer
+    onCountrySelect(country); // update selectedCountry  
+    setOpen(false); 
   };
 
   return (
@@ -38,7 +38,7 @@ function MyAppBar({ onCountrySelect, onDarkModeChange }) {
           setSelectedCountry={handleCountrySelect}
         />
         <FormGroup sx={{ ml: "auto" }}>
-          <MaterialUISwitch
+          <MaterialUISwitch           //Dark mode/light mode
             sx={{ m: 1 }}
             defaultChecked
             onChange={(e) => {

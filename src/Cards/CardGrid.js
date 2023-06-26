@@ -5,7 +5,7 @@ import ModalContent from './CardBox';
 import axios from 'axios';
 import { Pagination } from '@mui/material';
 
-function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory, selectedManufacturer }) {
+function CardGrid({ selectedCountry, searchValue, selectedCategory, selectedManufacturer }) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [page, setPage] = useState(1);
@@ -13,15 +13,15 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   const [totalPages, setTotalPages] = useState(0);
   const [lastSelectedCountry, setLastSelectedCountry] = useState('');
 
-  const handleOpenModal = (card) => {
-    setSelectedCard(card);
+  const handleOpenModal = (card) => { //Opening a full card handlers
+    setSelectedCard(card);  
   };
 
   const handleCloseModal = () => {
     setSelectedCard(null);
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = () => { //handles the next button on open box when a card image is clicked in order to display the right content
     if (selectedCard !== null) {
       const currentIndex = cards.findIndex((card) => card.id === selectedCard.id);
       const nextIndex = currentIndex + 1;
@@ -37,7 +37,7 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
     setPage(value);
   };
 
-  useEffect(() => {
+  useEffect(() => { //Sets first page
     if (selectedCountry !== lastSelectedCountry) {
       setPage(1);
       setLastSelectedCountry(selectedCountry);
@@ -45,7 +45,7 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   }, [selectedCountry, lastSelectedCountry]); 
 
   useEffect(() => {
-    let endpoint = 'http://localhost:3001/api/guns/paginated';
+    let endpoint = 'http://localhost:3001/api/guns/paginated'; //pagination based on filter,search etc
 
     const params = {
       country: selectedCountry,
@@ -80,7 +80,7 @@ function CardGrid({ selectedCountry, countryFlags, searchValue, selectedCategory
   return (
     <div>
       <Grid container spacing={4}>
-        {cards.map((card) => (
+        {cards.map((card) => ( 
           <Grid item key={card.id} xs={12} sm={6} md={4}>
             <CardItem card={card} onOpenModal={handleOpenModal} />
           </Grid>

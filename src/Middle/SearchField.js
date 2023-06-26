@@ -14,7 +14,7 @@ function SearchField({ onSearch, weaponNames }) {
 
   useEffect(() => {
     setValue('');
-  }, [weaponNames]);
+  }, [weaponNames]);    
 
   const handleInputChange = (event, newValue) => {
     setValue(newValue);
@@ -30,7 +30,7 @@ function SearchField({ onSearch, weaponNames }) {
 
   return (
     <div>
-      <Autocomplete
+      <Autocomplete //Autocomplete retrieves the unique names as well as input
         value={value}
         options={weaponNames}
         onChange={handleSelect}

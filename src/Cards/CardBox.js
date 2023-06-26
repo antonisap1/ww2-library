@@ -12,7 +12,7 @@ function ModalContent({ card, onCloseModal, onNextClick }) {
     return null;
   }
 
-  const handleCloseClick = () => {
+  const handleCloseClick = () => {  //handles clicks on buttons
     onCloseModal();
   };
 

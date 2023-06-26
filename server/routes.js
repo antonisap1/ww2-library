@@ -4,7 +4,7 @@ import pool from "./db.js";
 const router = express.Router();
 
 // Get all cards
-router.get("/guns/:title/country", (req, res) => {
+router.get("/guns/:title/country", (req, res) => { //getting specific titles
   const gunTitle = req.params.title;
   const query = "SELECT country FROM guns WHERE title = ?";
 
@@ -20,7 +20,7 @@ router.get("/guns/:title/country", (req, res) => {
     }
   });
 });
-router.get("/guns", (req, res) => {
+router.get("/guns", (req, res) => { //getting all titles based on country..or not
   const { country } = req.query;
 
   let query = "SELECT * FROM guns";
@@ -39,7 +39,7 @@ router.get("/guns", (req, res) => {
   });
 });
 
-router.get("/guns/paginated", (req, res) => {
+router.get("/guns/paginated", (req, res) => { //query builder for pagination to take all unique titles based on filters,selected country etc
   let { country, offset: inputOffset, limit, category, title, manufacturer } = req.query;
   const offset = (inputOffset - 1) * limit;
 
@@ -113,7 +113,7 @@ router.get("/guns/paginated", (req, res) => {
   });
 });
 
-router.get("/guns/title", (req, res) => {
+router.get("/guns/title", (req, res) => { //get titles
   const query = "SELECT title FROM guns";
 
   pool.query(query, (error, results) => {
@@ -127,7 +127,7 @@ router.get("/guns/title", (req, res) => {
   });
 });
 
-router.get("/guns/category", (req, res) => {
+router.get("/guns/category", (req, res) => { //get categories
   const query = "SELECT category FROM guns";
 
   pool.query(query, (error, results) => {
@@ -141,7 +141,7 @@ router.get("/guns/category", (req, res) => {
   });
 });
 
-router.get("/guns/manufacturer", (req, res) => {
+router.get("/guns/manufacturer", (req, res) => { //get manufacturers
   const query = "SELECT manufacturer FROM guns";
 
   pool.query(query, (error, results) => {

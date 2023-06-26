@@ -9,13 +9,13 @@ function FilterMenu({ anchorEl, onClose, weaponCategory, onCategorySelect }) {
     setSelectedCategory('');
   }, [weaponCategory]);
 
-  const handleMenuItemClick = (category) => {
+  const handleMenuItemClick = (category) => { //Sets selected category if any
     setSelectedCategory(category);
     onCategorySelect(category);
     onClose();
   };
 
-  const handleRemoveFilter = () => {
+  const handleRemoveFilter = () => { //nullifies deselected filter
     setSelectedCategory('');
     onCategorySelect('');
     onClose();
@@ -40,7 +40,7 @@ function FilterMenu({ anchorEl, onClose, weaponCategory, onCategorySelect }) {
           Remove Filter
         </MenuItem>
       )}
-      {weaponCategory.map((category) => (
+      {weaponCategory.map((category) => ( //displays all the unique category
         <MenuItem key={category} onClick={() => handleMenuItemClick(category)}>
           {category}
         </MenuItem>

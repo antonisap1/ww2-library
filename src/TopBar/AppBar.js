@@ -6,7 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import MenuListComposition from "./MenuListComposition";
 import styled from "@emotion/styled";
-import { FormControlLabel, FormGroup, Switch } from "@mui/material";
+import { FormGroup, Switch } from "@mui/material";
 
 function MyAppBar({ onCountrySelect, onDarkModeChange }) {
   const [open, setOpen] = useState(false);

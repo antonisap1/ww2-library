@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "./AppBar";
-import HeroUnit from "./HeroUnit";
-import CardGrid from "./CardGrid";
-import Footer from "./Footer";
+import AppBar from "./TopBar/AppBar";
+import HeroUnit from "./Middle/HeroUnit";
+import CardGrid from "./Cards/CardGrid";
+import Footer from "./Footer/Footer";
 import axios from "axios";
 import _ from "lodash";
 

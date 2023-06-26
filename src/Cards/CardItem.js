@@ -51,7 +51,7 @@ function CardItem({ card, onOpenModal }) {
               <Grid key={country} item xs={0}>
                 <Tooltip key={country} title={String(country)} arrow>
                   <img
-                    src={`/${country}.png`}
+                    src={`/Flags/${country}.png`}
                     alt={country}
                     style={{
                       width: "24px",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import CardItem from './CardItem';
-import ModalContent from './ModalContent';
+import ModalContent from './CardBox';
 import axios from 'axios';
 import { Pagination } from '@mui/material';
 

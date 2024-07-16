@@ -1,3 +1,25 @@
+This is a lab project aimed to familirize us with web development(Node.js,React(MUI),express.js and MySql for database). It is about all small arm weapons used in WWII,the list of which can be sorted by country,company,gun type . Information was gathered mostly from Wikipedia. 
+
+![image](https://github.com/user-attachments/assets/e97b36b4-0f1a-4f0c-8bd9-b3aea8af65c6) ![image](https://github.com/user-attachments/assets/3a1e15c2-a659-4f1c-a3f9-0fb126c1bc8e) ![image](https://github.com/user-attachments/assets/2f18268c-1172-4f08-bd97-dcb816d0fd40)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
